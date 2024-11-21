@@ -1,0 +1,31 @@
+# Ignore the .env file (contains sensitive credentials)
+.env
+
+# Ignore compiled Python files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore environment directories
+env/
+venv/
+ENV/
+.venv/
+.virtualenv/
+
+# Ignore any IDE or editor-specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Ignore the generated PDF files
+*.pdf
+
+# Ignore log files
+*.log
+
+# Ignore system files
+.DS_Store
+Thumbs.db
