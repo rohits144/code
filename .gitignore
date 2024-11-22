@@ -26,6 +26,9 @@ ENV/
 # Ignore log files
 *.log
 
+# Ignore zip file
+*.zip
+
 # Ignore system files
 .DS_Store
 Thumbs.db

@@ -180,9 +180,8 @@ def send_email_with_attachment(sender_email, recipient_email, subject, body, att
     except Exception as e:
         print(f"Failed to send email: {e}")
 
+def run():
 
-if __name__ == "__main__":
-    # List of RSS feeds from Indian news websites
     rss_feed_urls = [
         "https://www.thehindu.com/news/national/feeder/default.rss",  # The Hindu National News
         "https://indianexpress.com/section/india/feed/",             # Indian Express India Section
@@ -199,25 +198,35 @@ if __name__ == "__main__":
     pdf_filename = "news_articles_with_hyperlinks.pdf"
     create_pdf(news_articles, pdf_filename)
 
-# Load environment variables from .env file
-load_dotenv()
+    # Load environment variables from .env file
+    load_dotenv()
 
-# Get credentials from environment variables
-sender_email = os.getenv("EMAIL")
-login_password = os.getenv("PASSWORD")
-recipient_email = os.getenv("RECIPIENT_EMAIL")
-smtp_server = "smtp.gmail.com"
-smtp_port = 587
+    # Get credentials from environment variables
+    sender_email = os.getenv("EMAIL")
+    login_password = os.getenv("PASSWORD")
+    recipient_email = os.getenv("RECIPIENT_EMAIL")
+    smtp_server = "smtp.gmail.com"
+    smtp_port = 587
 
-# Send the email with the PDF attachment
-send_email_with_attachment(
-        sender_email,
-        recipient_email,
-        "Daily News PDF",
-        "Please find attached the latest news PDF.",
-        pdf_filename,
-        smtp_server,
-        smtp_port,
-        sender_email,
-        login_password
-    )
+    try:
+        # Send the email with the PDF attachment
+        send_email_with_attachment(
+                sender_email,
+                recipient_email,
+                "Daily News PDF",
+                "Please find attached the latest news PDF.",
+                pdf_filename,
+                smtp_server,
+                smtp_port,
+                sender_email,
+                login_password
+            )
+    except Exception as e:
+        print("Failed to send main - {}".format(e))
+    finally:
+        if os.path.exists(pdf_filename):
+            os.remove(pdf_filename)
+            print(f"Deleted file: {pdf_filename}")
+    
+if __name__ == '__main__':
+    run()
