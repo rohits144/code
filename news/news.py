@@ -2,6 +2,7 @@
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 import feedparser
+import reportlab
 from typing import List, Dict
 from dotenv import load_dotenv
 import os
