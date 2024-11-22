@@ -229,5 +229,16 @@ def run():
             os.remove(pdf_filename)
             print(f"Deleted file: {pdf_filename}")
     
+def test_fetch():
+
+    rss_feed_urls = [
+        "https://www.thehindu.com/news/national/feeder/default.rss",  # The Hindu National News
+    ]
+
+    fetcher = NewsFetcher(rss_feed_urls)
+    # Fetch news
+    news_articles = fetcher.fetch_news()
+    print(news_articles)
+
 if __name__ == '__main__':
     run()
